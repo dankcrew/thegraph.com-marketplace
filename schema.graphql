@@ -1,1 +1,13 @@
+type _Schema_
+  @fulltext(
+    name: "productSearch"
+    language: en
+    algorithm: rank
+    include: [{ entity: "Product", fields: [{ name: "name" }] }]
+  )
 
+type Product @entity {
+  id: ID!
+  name: String!
+  owner: Bytes!
+}

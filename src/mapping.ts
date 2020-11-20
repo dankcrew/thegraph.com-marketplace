@@ -1,4 +1,8 @@
-import { BigInt } from "@graphprotocol/graph-ts"
+import {
+  BigInt,
+  log,
+  store,
+} from "@graphprotocol/graph-ts"
 import {
   Marketplace,
   Halted,
@@ -23,6 +27,7 @@ import {
   WhitelistRejected,
   WhitelistRequested
 } from "../generated/Marketplace/Marketplace"
+import { Product } from '../generated/schema'
 
 export function handleHalted(event: Halted): void {}
 
@@ -30,11 +35,28 @@ export function handleNewSubscription(event: NewSubscription): void {}
 
 export function handleOwnershipTransferred(event: OwnershipTransferred): void {}
 
-export function handleProductCreated(event: ProductCreated): void {}
+export function handleProductCreated(event: ProductCreated): void {
+  log.warning('Create product: id={} name={} blockNumber={}', [event.params.id.toHexString(), event.params.name, event.block.number.toString()])
+  let id = event.params.id.toHex()
+  let p = new Product(id)
+  p.name = event.params.name
+  p.owner = event.params.owner
+  p.save()
+}
 
-export function handleProductDeleted(event: ProductDeleted): void {}
+export function handleProductDeleted(event: ProductDeleted): void {
+//  let id = event.transaction.hash.toHex()
+//  store.remove('Product', id)
+}
 
-export function handleProductImported(event: ProductImported): void {}
+export function handleProductImported(event: ProductImported): void {
+  log.warning('Importing product: id={} name={} blockNumber={}', [event.params.id.toHexString(), event.params.name, event.block.number.toString()])
+  let id = event.params.id.toHex()
+  let p = new Product(id)
+  p.name = event.params.name
+  p.owner = event.params.owner
+  p.save()
+}
 
 export function handleProductOwnershipChanged(
   event: ProductOwnershipChanged
@@ -54,7 +76,9 @@ export function handleSubscribed(event: Subscribed): void {}
 
 export function handleSubscriptionExtended(event: SubscriptionExtended): void {}
 
-export function handleSubscriptionImported(event: SubscriptionImported): void {}
+export function handleSubscriptionImported(event: SubscriptionImported): void {
+  log.warning('Subscription imported', [])
+}
 
 export function handleSubscriptionTransferred(
   event: SubscriptionTransferred
