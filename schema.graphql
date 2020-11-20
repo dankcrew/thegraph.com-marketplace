@@ -1,13 +1,20 @@
-type _Schema_
-  @fulltext(
-    name: "productSearch"
-    language: en
-    algorithm: rank
-    include: [{ entity: "Product", fields: [{ name: "name" }] }]
-  )
-
 type Product @entity {
   id: ID!
   name: String!
   owner: Bytes!
+  subscriptions: [ProductSubscription!]! @derivedFrom(field: "product")
+}
+
+type _Schema_ @fulltext (
+  name: "productSearch"
+  language: en
+  algorithm: rank
+  include: [{ entity: "Product", fields: [{ name: "name" }] }]
+)
+
+# TODO should be named to Subscription, but that causes "type Subscription already exists in the input schema" error and the subgraph doesn't start
+type ProductSubscription @entity {
+  id: ID!
+  subscriber: Bytes!
+  product: Product!
 }

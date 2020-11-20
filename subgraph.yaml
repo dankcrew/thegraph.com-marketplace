@@ -8,13 +8,14 @@ dataSources:
     source:
       address: "0x2b3f2887c697b3f4f8d9f818c95482e1a3a759a5"
       abi: Marketplace
-      #startBlock: 5450000 # Marketplace start
-      startBlock: 9831649 # Import start/Swash import
+      #startBlock: 5450000 # real start
+      startBlock: 9831649 # temprorary start while developing the subgraph: we get some data and the deployment is faster
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
+        - ExchangeRatesUpdated
         - Halted
         - NewSubscription
         - OwnershipTransferred
@@ -40,6 +41,8 @@ dataSources:
         - name: Marketplace
           file: ./abis/Marketplace.json
       eventHandlers:
+        - event: ExchangeRatesUpdated(uint256,uint256)
+          handler: handleExchangeRatesUpdated
         - event: Halted()
           handler: handleHalted
         - event: NewSubscription(indexed bytes32,indexed address,uint256)
