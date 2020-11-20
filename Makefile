@@ -37,7 +37,7 @@ graph-codegen:
 	$(call npm, run codegen)
 
 .PHONY: graph-deploy
-graph-deploy: graph-codegen
+graph-deploy:
 	$(call npm, run deploy)
 
 .PHONY: graph-create-local
