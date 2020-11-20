@@ -1,0 +1,6 @@
+type ExampleEntity @entity {
+  id: ID!
+  count: BigInt!
+  timestamp: BigInt! # uint256
+  dataInUsd: BigInt! # uint256
+}

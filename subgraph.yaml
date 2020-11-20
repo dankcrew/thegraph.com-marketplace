@@ -1,0 +1,86 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Contract
+    network: mainnet
+    source:
+      address: "0x2b3f2887c697b3f4f8d9f818c95482e1a3a759a5"
+      abi: Contract
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.2
+      language: wasm/assemblyscript
+      entities:
+        - ExchangeRatesUpdated
+        - Halted
+        - NewSubscription
+        - OwnershipTransferred
+        - ProductCreated
+        - ProductDeleted
+        - ProductImported
+        - ProductOwnershipChanged
+        - ProductOwnershipOffered
+        - ProductRedeployed
+        - ProductUpdated
+        - Resumed
+        - Subscribed
+        - SubscriptionExtended
+        - SubscriptionImported
+        - SubscriptionTransferred
+        - TxFeeChanged
+        - WhitelistApproved
+        - WhitelistDisabled
+        - WhitelistEnabled
+        - WhitelistRejected
+        - WhitelistRequested
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: ExchangeRatesUpdated(uint256,uint256)
+          handler: handleExchangeRatesUpdated
+        - event: Halted()
+          handler: handleHalted
+        - event: NewSubscription(indexed bytes32,indexed address,uint256)
+          handler: handleNewSubscription
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: ProductCreated(indexed address,indexed bytes32,string,address,uint256,uint8,uint256)
+          handler: handleProductCreated
+        - event: ProductDeleted(indexed address,indexed bytes32,string,address,uint256,uint8,uint256)
+          handler: handleProductDeleted
+        - event: ProductImported(indexed address,indexed bytes32,string,address,uint256,uint8,uint256)
+          handler: handleProductImported
+        - event: ProductOwnershipChanged(indexed address,indexed bytes32,indexed address)
+          handler: handleProductOwnershipChanged
+        - event: ProductOwnershipOffered(indexed address,indexed bytes32,indexed address)
+          handler: handleProductOwnershipOffered
+        - event: ProductRedeployed(indexed address,indexed bytes32,string,address,uint256,uint8,uint256)
+          handler: handleProductRedeployed
+        - event: ProductUpdated(indexed address,indexed bytes32,string,address,uint256,uint8,uint256)
+          handler: handleProductUpdated
+        - event: Resumed()
+          handler: handleResumed
+        - event: Subscribed(indexed bytes32,indexed address,uint256)
+          handler: handleSubscribed
+        - event: SubscriptionExtended(indexed bytes32,indexed address,uint256)
+          handler: handleSubscriptionExtended
+        - event: SubscriptionImported(indexed bytes32,indexed address,uint256)
+          handler: handleSubscriptionImported
+        - event: SubscriptionTransferred(indexed bytes32,indexed address,indexed address,uint256)
+          handler: handleSubscriptionTransferred
+        - event: TxFeeChanged(indexed uint256)
+          handler: handleTxFeeChanged
+        - event: WhitelistApproved(indexed bytes32,indexed address)
+          handler: handleWhitelistApproved
+        - event: WhitelistDisabled(indexed bytes32)
+          handler: handleWhitelistDisabled
+        - event: WhitelistEnabled(indexed bytes32)
+          handler: handleWhitelistEnabled
+        - event: WhitelistRejected(indexed bytes32,indexed address)
+          handler: handleWhitelistRejected
+        - event: WhitelistRequested(indexed bytes32,indexed address)
+          handler: handleWhitelistRequested
+      file: ./src/mapping.ts
