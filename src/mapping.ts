@@ -1,6 +1,6 @@
 import { BigInt } from "@graphprotocol/graph-ts"
 import {
-  Contract,
+  Marketplace,
   Halted,
   NewSubscription,
   OwnershipTransferred,
@@ -22,7 +22,7 @@ import {
   WhitelistEnabled,
   WhitelistRejected,
   WhitelistRequested
-} from "../generated/Contract/Contract"
+} from "../generated/Marketplace/Marketplace"
 
 export function handleHalted(event: Halted): void {}
 
