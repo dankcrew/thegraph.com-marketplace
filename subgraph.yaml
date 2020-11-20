@@ -13,7 +13,6 @@ dataSources:
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - ExchangeRatesUpdated
         - Halted
         - NewSubscription
         - OwnershipTransferred
@@ -39,8 +38,6 @@ dataSources:
         - name: Contract
           file: ./abis/Contract.json
       eventHandlers:
-        - event: ExchangeRatesUpdated(uint256,uint256)
-          handler: handleExchangeRatesUpdated
         - event: Halted()
           handler: handleHalted
         - event: NewSubscription(indexed bytes32,indexed address,uint256)
