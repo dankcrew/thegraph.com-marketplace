@@ -1,6 +1,6 @@
 {
   "name": "streamr-marketplace",
-  "license": "UNLICENSED",
+  "license": "AGPL-3.0-only",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
