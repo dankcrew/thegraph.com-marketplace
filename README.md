@@ -69,4 +69,37 @@ Types generated successfully
 ```
 ## Deploy Graph
 ```
+kkn@kare-mbp ~/src/github.com/streamr-dev/thegraph.com-marketplace master  % make graph-deploy
+Running node v14.15.1 (npm v6.14.8)
+
+> streamr-marketplace@ deploy /Users/kkn/src/github.com/streamr-dev/thegraph.com-marketplace
+> graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ streamr-dev/streamr-marketplace
+
+  Skip migration: Bump mapping apiVersion from 0.0.1 to 0.0.2
+  Skip migration: Bump mapping apiVersion from 0.0.2 to 0.0.3
+  Skip migration: Bump mapping apiVersion from 0.0.3 to 0.0.4
+  Skip migration: Bump mapping specVersion from 0.0.1 to 0.0.2
+✔ Apply migrations
+✔ Load subgraph from subgraph.yaml
+  Compile data source: Marketplace => build/Marketplace/Marketplace.wasm
+✔ Compile subgraph
+  Copy schema file build/schema.graphql
+  Write subgraph file build/Marketplace/abis/Marketplace.json
+  Write subgraph manifest build/subgraph.yaml
+✔ Write compiled subgraph to build/
+  Add file to IPFS build/schema.graphql
+                .. QmZV5EUdu55CyLL6vhy6UTNUjX2jgNgCDkhfdHzcUCGLX4
+  Add file to IPFS build/Marketplace/abis/Marketplace.json
+                .. QmREY8FsMXkg1jpzAAouCtGiZf7yJsn5adsYMohCw3XAJh
+  Add file to IPFS build/Marketplace/Marketplace.wasm
+                .. QmdHhw1wS5uhQVkhcmgRmjKPUXoV2ZoHCVRWxWggo6CuP5
+✔ Upload subgraph to IPFS
+
+Build completed: QmU3ruVCfaW3mXdU9gatAkEFhV2X7padJxREeZsDr8A4gd
+
+Deployed to https://thegraph.com/explorer/subgraph/streamr-dev/streamr-marketplace
+
+Subgraph endpoints:
+Queries (HTTP):     https://api.thegraph.com/subgraphs/name/streamr-dev/streamr-marketplace
+Subscriptions (WS): wss://api.thegraph.com/subgraphs/name/streamr-dev/streamr-marketplace
 ```
